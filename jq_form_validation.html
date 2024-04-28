@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Validation</title>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#form".validate());
+            });
+        </script>
+    </head>
+
+    <body>
+        <div>
+            <h2>Registration</h2>
+            <form action="#" name="registration" id="form">
+                <label for="firstname">First Name:</label>
+                <input type="text" name="firstname" required><br>
+
+                <label for="lastname">Last Name:</label>
+                <input type="text" name="lastname"><br>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" minlength="8" required><br>
+
+                <input name="submit" type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+
+</html>

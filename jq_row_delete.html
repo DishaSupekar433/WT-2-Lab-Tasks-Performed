@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <title>Delete table rows</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 2px solid black;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <h3>Click to delete all table rows except the 1st row</h3>
+    <button id="btn">Click</button>
+
+    <body>
+        <table id="rTable">
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>A</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>B</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>C</td>
+                <td>22</td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        $('#btn').click(function () {
+            $('#rTable').find("tr:gt(0)").remove();
+        });
+    </script>
+
+</html>

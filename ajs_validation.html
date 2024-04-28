@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+    <head>
+        <title>AngularJS Validation and Error Handling</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.6.9/angular-messages.min.js"></script>
+        <style>
+            body {
+                margin: 20px;
+            }
+
+            .has-error {
+                border-color: red;
+            }
+
+            .ng-invalid.ng-touched,
+            .ng-submitted .ng-invalid {
+                background-color: #ffe6e6;
+            }
+        </style>
+    </head>
+
+    <body ng-controller="FormController">
+        <form name="myForm">
+            <div class="form-group"
+                ng-class="{'has-error': myForm.username.$invalid && (myForm.username.$touched || myForm.$submitted)}">
+                <label for="username">Username:</label>
+                <input id="username" name="username" type="text" ng-model="username" ng-pattern="/^[a-zA-Z0-9]+$/"
+                    required>
+                <ng-messages for="myForm.username.$error" ng-show="myForm.username.$touched || myForm.$submitted">
+                    <ng-message when="required">Username is required.</ng-message>
+                    <ng-message when="pattern">Please use alphanumeric characters.</ng-message>
+                </ng-messages>
+                <ng-messages for="backendErrors.username" ng-show="myForm.username.$touched || myForm.$submitted">
+                    <ng-message ng-repeat="message in backendErrors.username">{{ message }}</ng-message>
+                </ng-messages>
+            </div>
+            <div class="form-group"
+                ng-class="{'has-error': myForm.password.$invalid && (myForm.password.$touched || myForm.$submitted)}">
+                <label for="password">Password:</label>
+                <input id="password" name="password" type="password" ng-model="password" ng-minlength="4" required>
+                <ng-messages for="myForm.password.$error" ng-show="myForm.password.$touched || myForm.$submitted">
+                    <ng-message when="required">Password is required.</ng-message>
+                    <ng-message when="minlength">Password must be at least 4 characters.</ng-message>
+                </ng-messages>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" ng-click="submitForm()">Submit</button>
+            </div>
+        </form>
+
+        <script>
+            var app = angular.module('myApp', ['ngMessages']);
+            app.controller('FormController', function ($scope) {
+                $scope.backendErrors = {};
+
+                $scope.submitForm = function () {
+                    try {
+                        if ($scope.myForm.$invalid) {
+                            $scope.myForm.$setSubmitted();
+                            return;
+                        }
+
+                        if ($scope.username === 'invalid') {
+                            throw new Error('Username is invalid');
+                        }
+
+                        alert('Form submitted successfully');
+                    } catch (error) {
+                        console.error('An error occurred:', error);
+                        $scope.backendErrors.username = ['An error occurred on the server'];
+                    }
+                };
+            });
+        </script>
+    </body>
+
+</html>

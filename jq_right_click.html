@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Right click disabled</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(document).bind("contextmenu", function (e) {
+                    return false;
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <center>
+            <h1>Heading</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat magnam saepe possimus
+                consectetur distinctio quae ratione, sed sit sint perspiciatis. Corporis, consequuntur. Facilis quam,
+                odio non dicta et similique?
+                Impedit praesentium illum repellendus quasi reprehenderit distinctio illo incidunt quibusdam, doloremque
+                temporibus, placeat eveniet ducimus maxime aut? Alias fugiat velit dolor quibusdam ex. Enim ipsam error
+                sit similique quae sunt!
+                Esse, error eaque numquam repudiandae minima obcaecati laudantium iusto laboriosam recusandae, modi hic
+                quidem voluptatem similique nesciunt neque ipsam cum ea perferendis id nemo harum vitae eveniet dolor?
+                Voluptas, iure.
+            </p>
+        </center>
+    </body>
+
+</html>

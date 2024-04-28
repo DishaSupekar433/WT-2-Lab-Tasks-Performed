@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Option</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    </head>
+
+    <div>
+        <p>The selected value: </p>
+        <select id="myselection">
+            <option value="1">First</option>
+            <option value="2">Second</option>
+            <option value="3">Third</option>
+        </select>
+        <br>
+        <button id="submit">Submit</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                alert($("#myselection").val());
+            });
+        });
+    </script>
+
+</html>
